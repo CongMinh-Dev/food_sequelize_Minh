@@ -1,15 +1,9 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class video_comment extends Model {
+export default class like_res extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    comment_id: {
-      autoIncrement: true,
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true
-    },
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -18,33 +12,27 @@ export default class video_comment extends Model {
         key: 'user_id'
       }
     },
-    video_id: {
+    res_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'video',
-        key: 'video_id'
+        model: 'restaurant',
+        key: 'res_id'
       }
     },
-    date_create: {
+    date_like: {
       type: DataTypes.DATE,
       allowNull: true
     },
-    content: {
-      type: DataTypes.TEXT,
-      allowNull: true
-    },
-    reply_list: {
-      type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    timestamp: {
-      type: DataTypes.DATE,
-      allowNull: true
+    like_id: {
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true
     }
   }, {
     sequelize,
-    tableName: 'video_comment',
+    tableName: 'like_res',
     timestamps: false,
     indexes: [
       {
@@ -52,7 +40,7 @@ export default class video_comment extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "comment_id" },
+          { name: "like_id" },
         ]
       },
       {
@@ -63,10 +51,10 @@ export default class video_comment extends Model {
         ]
       },
       {
-        name: "video_id",
+        name: "res_id",
         using: "BTREE",
         fields: [
-          { name: "video_id" },
+          { name: "res_id" },
         ]
       },
     ]

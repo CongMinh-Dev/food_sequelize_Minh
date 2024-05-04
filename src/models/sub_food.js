@@ -1,26 +1,34 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class code extends Model {
+export default class sub_food extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
-    id: {
+    sub_id: {
       autoIncrement: true,
-      type: DataTypes.BIGINT.UNSIGNED,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    code: {
-      type: DataTypes.STRING(50),
+    sub_name: {
+      type: DataTypes.STRING(100),
       allowNull: true
     },
-    expired: {
-      type: DataTypes.DATE,
+    sub_price: {
+      type: DataTypes.FLOAT,
       allowNull: true
+    },
+    food_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'food',
+        key: 'food_id'
+      }
     }
   }, {
     sequelize,
-    tableName: 'code',
+    tableName: 'sub_food',
     timestamps: false,
     indexes: [
       {
@@ -28,15 +36,14 @@ export default class code extends Model {
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "id" },
+          { name: "sub_id" },
         ]
       },
       {
-        name: "id",
-        unique: true,
+        name: "food_id",
         using: "BTREE",
         fields: [
-          { name: "id" },
+          { name: "food_id" },
         ]
       },
     ]

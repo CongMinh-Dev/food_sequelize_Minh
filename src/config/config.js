@@ -7,7 +7,7 @@
 
 
 export default {
-    db_database: process.env.DB_DATABASE,
+    db_database: "db_node41_food",
     db_user: process.env.DB_USER,
     db_pass: process.env.DB_PASS,
     db_host: process.env.DB_HOST,
