@@ -19,7 +19,7 @@ restaurantRouter.get("/arrlike/:res_id", arrLike)
 // API create rate
 restaurantRouter.post("/rate", createRate)
 
-// api lấy danh sách like
+// api lấy danh sách rate
 restaurantRouter.get("/arr-rate/:res_id", arrRate)
 
 

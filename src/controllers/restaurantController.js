@@ -1,7 +1,6 @@
 import initModels from "../models/init-models.js";
 import sequelize from "../models/connect.js";
 import { response } from "../config/response.js";
-import { decodeToken } from "../config/jwt.js";
 
 
 const model = initModels(sequelize)
